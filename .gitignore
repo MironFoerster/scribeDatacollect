@@ -1,0 +1,7 @@
+/virtualenv/
+*.log
+*.pot
+*.pyc
+__pycache__
+db.sqlite
+
