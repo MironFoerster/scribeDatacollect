@@ -37,7 +37,7 @@ def data(request):
 
 
     # send next task
-    with open('../static/csv/split_tasks.csv') as f:
+    with open('../static/csv/setup/split_tasks.csv') as f:
         tasks_reader = csv.DictReader(f)
         # skip csv header
         next(tasks_reader)

@@ -31,7 +31,7 @@ def data(request):
             msg = 'Dieser Eintrag war schon vorhanden!'
 
     # send next task
-    with open('../static/csv/write_tasks.csv') as f:
+    with open('../static/csv/setup/write_tasks.csv') as f:
         tasks_reader = csv.DictReader(f)
         # skip csv header
         next(tasks_reader)
