@@ -15,7 +15,7 @@ def index(request):
 def login_view(request):
     data = json.loads(request.body)
     try:
-        user = User.objects.get(username=data['username'])
+        user = User.objects.get(username=data['username'].replace('.', ''))
         login(request, user)
         login_info = {'succ': True, 'msg': 'Login erfolgreich!'}
     except ObjectDoesNotExist:
