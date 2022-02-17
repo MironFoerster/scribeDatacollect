@@ -29,20 +29,26 @@ class Command(BaseCommand):
         self.stdout.write('Every person will get %d split tasks!' % tasks_per_person)
         self.stdout.write('%d split tasks will get dropped!' % num_dropped_tasks)
 
-        full_tasks_reader = csv.reader(tasks_fp, delimiter=';')
-        next(full_tasks_reader)  # skip header
-
+        # populate database and create file infrastructure
+        full_tasks_reader = csv.DictReader(tasks_fp, delimiter=';')  # automatically pops header?
         try:
             for user in User.objects.all():
-                person_dp = os.path.join(settings.BASE_DIR, 'static/csv/work/', user.username)
+                p = PersonSplit.objects.create(name=user.username)
+                person_dp = os.path.join(settings.BASE_DIR, 'static/csv/split/', p.name)
                 os.makedirs(person_dp, exist_ok=True)
 
-                with open(os.path.join(person_dp, 'split_tasks.csv'), 'w') as person_tasks_file:
-                    person_tasks_writer = csv.writer(person_tasks_file, delimiter=';')
+                with open(os.path.join(person_dp, 'tasks.csv'), 'w') as person_tasks_file:
+                    fieldnames = ['strokes', 'text', 'person']
+                    person_tasks_writer = csv.DictWriter(person_tasks_file, fieldnames=fieldnames, delimiter=';')
 
-                    person_tasks_writer.writerow(['data'])  # write header
+                    person_tasks_writer.writeheader()
                     for i in range(tasks_per_person):
                         person_tasks_writer.writerow(next(full_tasks_reader))
+
+                with open(os.path.join(person_dp, 'submits.csv'), 'w') as person_submits_file:
+                    fieldnames = ['strokes', 'text', 'person']
+                    person_submits_writer = csv.DictWriter(person_submits_file, fieldnames=fieldnames, delimiter=';')
+                    person_submits_writer.writeheader()
 
         except:
             raise CommandError('There was a Problem... and this exception handling is huge garbage...')

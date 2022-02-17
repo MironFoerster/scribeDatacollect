@@ -18,7 +18,7 @@ class Command(BaseCommand):
             with open(users_fp) as users_file:
                 users_reader = csv.reader(users_file)
                 for username in users_reader:
-                    User.objects.create_user(username[0])
+                    User.objects.create_user(username[0])  # username is list
         except FileNotFoundError:
             raise CommandError('File "%s" does not exist!' % users_fp)
 
