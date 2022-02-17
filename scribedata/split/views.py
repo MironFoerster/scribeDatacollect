@@ -41,7 +41,8 @@ def data(request):
 
     # SEND NEXT TASK
     with open(os.path.join('../static/csv/write/', p.name, 'tasks.csv'), 'r') as f:
-        tasks_reader = csv.DictReader(f)
+        fieldnames = ['strokes', 'text', 'person']
+        tasks_reader = csv.DictReader(f, fieldnames=fieldnames)
         # skip csv header
         next(tasks_reader)
         # skip already completed tasks
