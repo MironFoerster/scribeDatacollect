@@ -45,7 +45,7 @@ def data(request):
             next(tasks_reader)
         # read current task
         task = next(tasks_reader)
-        task_data = {'text': task['text'], 'person': p.name}
+        task_data = {'text': task['text'], 'person': task['person']}
 
     response = {
         'id': p.current_task,

@@ -38,12 +38,12 @@ class Command(BaseCommand):
                 os.makedirs(person_dp, exist_ok=True)
 
                 with open(os.path.join(person_dp, 'tasks.csv'), 'w') as person_tasks_file:
-                    fieldnames = ['text']
+                    fieldnames = ['text', 'person']
                     person_tasks_writer = csv.DictWriter(person_tasks_file, fieldnames=fieldnames, delimiter=';')
 
                     person_tasks_writer.writeheader()
                     for i in range(tasks_per_person):
-                        person_tasks_writer.writerow(next(full_tasks_reader))
+                        person_tasks_writer.writerow({'text': next(full_tasks_reader)['text'], 'person': p.name})
 
                 with open(os.path.join(person_dp, 'submits.csv'), 'w') as person_submits_file:
                     fieldnames = ['strokes', 'text', 'person']
