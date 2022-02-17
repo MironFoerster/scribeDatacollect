@@ -32,6 +32,7 @@ def data(request):
                         submits_writer.writerow({'strokes': row['strokes'], 'text': row['text'], 'person': row['person']})
                 msg = 'Erfolgreich in den Datensatz eingetragen!'
             else:
+                p.rejected_tasks_string += str(submit['index']+',')
                 msg = 'Erfolgreich aus dem Datensatz entfernt!'
         else:
             msg = 'Dieser Eintrag war schon vorhanden!'
