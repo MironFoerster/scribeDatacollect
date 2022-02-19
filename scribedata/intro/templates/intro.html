@@ -5,19 +5,68 @@ Intro
 
 {% block body %}
 
-<div class="slider">
-    <div class="slide-comp">
-        content
+<div id="intro-slider">
+    <div id="sc0" class="intro-slide-comp">
+        <div class="intro-slide-title">
+            Hallo! Willkommen bei scribeAI!
+        </div>
+        <div class="intro-slide-content">
+            Du willst dem Roboter Scribus helfen, Handschrift zu lernen?
+            <br><br>
+            Großartig! Dann lass uns gleich herausfinden, wie das geht!
+        </div>
+        <div class="intro-slide-buttons">
+            <button class="crazy-btn intro-slide-next-btn">Lets go!</button>
+        </div>
     </div>
-    <div class="slide-comp">
-        content
+    <div id="sc1" class="intro-slide-comp">
+        <div class="intro-slide-title">
+            Wie lernt ein Roboter Handschrift?
+        </div>
+        <div class="intro-slide-content">
+            In Scribus soll eine KI eingebaut werden, die aus jedem beliebigen Text Handschrift generieren kann.
+            <br><br>
+            Um die KI zu trainieren werden viele Handschriftbeispiele benötigt, aus denen die KI dann ihr eigenes Verständnis für Handschrift entwickeln soll.
+        </div>
+        <div class="intro-slide-buttons">
+            <button class="crazy-btn intro-slide-prev-btn">Zurück</button>
+            <button class="crazy-btn intro-slide-next-btn">So kannst du helfen!</button>
+        </div>
     </div>
-    <div class="slide-comp">
-        content
+    <div id="sc2" class="intro-slide-comp">
+        <div class="intro-slide-title">
+            Wir brauchen Handschriftdaten!
+        </div>
+        <div class="intro-slide-content">
+            Es gibt zwar schon einen großen Handschriftdatensatz im Internet, aber er ist leider nicht wirklich für Scribus geeignet.
+            <br><br>
+            Um ihn für Scribus verwenden zu können muss er noch in einzelne Wörter zerlegt werden. Außerdem ist er Qualitativ nicht so gut, sodass es naheliegt auch einen ganz neuen Datensatz zu erstellen
+        </div>
+        <div class="intro-slide-buttons">
+            <button class="crazy-btn intro-slide-prev-btn">Zurück</button>
+            <button class="crazy-btn intro-slide-next-btn">Deine Aufgabe</button>
+        </div>
     </div>
-    <div class="slide-comp">
-        content
+    <div id="sc3" class="intro-slide-comp">
+        <div class="intro-slide-title">
+            Dein Moodle-Benutzername
+        </div>
+        <div class="intro-slide-content">
+            Damit deine Handschrift nicht mit der von anderen Personen vermischt wird, musst du deinen Moodle-Benutzernamen angeben.(wird anonymisiert und abgemeldet, wenn du das Fenster schließt)
+            <br><br>
+            <input id="login-input" type="text">
+            <br><br>
+            <span style="font-size:0.5em;">Du musst kein Passwort angeben, damit du dein Passwort nicht an diese ungesicherte Website geben musst. Du könntest also auch einfach den Benutzernamen einer anderen Person angeben und so deine Handschrift unter ihrem Namen in den Datensatz eingehen lassen. Das würde die Struktur des Datensatzes und damit Stundenlange Arbeit vieler Menschen zunichtemachen. Handle Verantwortungsvoll!</span>        </div>
+        <div class="intro-slide-buttons">
+            <button class="crazy-btn intro-slide-prev-btn">Zurück</button>
+            <button id="login-btn" class="crazy-btn">Kann Losgehen</button>
+        </div>
     </div>
 </div>
 
+{% endblock %}
+
+{% block scriptsource %}
+{% load static %}
+{% static 'intro/intro.js' %}
 {% endblock %}

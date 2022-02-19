@@ -24,10 +24,11 @@ class Command(BaseCommand):
         tasks_per_person = num_tasks // num_users
         num_dropped_tasks = num_tasks % num_users
 
-        self.stdout.write('There are %d persons!' % num_users)
-        self.stdout.write('There are %d split tasks!' % num_tasks)
-        self.stdout.write('Every person will get %d split tasks!' % tasks_per_person)
-        self.stdout.write('%d split tasks will get dropped!' % num_dropped_tasks)
+        self.stdout.write('NUM_USERS=%d' % num_users)
+        self.stdout.write('NUM_TASKS=%d' % num_tasks)
+        self.stdout.write('TASKS_PER_PERSON=%d' % tasks_per_person)
+        self.stdout.write('NUM_DROPPED_TASKS=%d' % num_dropped_tasks)
+
 
         # populate database and create file infrastructure
         full_tasks_reader = csv.DictReader(tasks_fp, delimiter=';')  # automatically pops header?

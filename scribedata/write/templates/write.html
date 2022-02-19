@@ -6,3 +6,8 @@ Write
 {% block body %}
 nothink
 {% endblock %}
+
+{% block scriptsource %}
+{% load static %}
+{% static 'write/write.js' %}
+{% endblock %}

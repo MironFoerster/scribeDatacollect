@@ -3,6 +3,59 @@
 Stats
 {% endblock %}
 
+{% block cssvars %}
+--split-global: {{ split_global }};
+--write-global: {{ write_global }};
+--split-person: {{ split_person }};
+--write-person: {{ write_person }};
+{% endblock %}
+
 {% block body %}
-nothink
+
+<div id="stats-slider">
+    <div id="sc0" class="stats-slide-comp">
+        <div class="stats-slide-title">
+            Gesamt Fortschritt
+        </div>
+        <div class="stats-slide-content">
+            <div class="stats-pie-contain">
+                <div class="stats-pie-title">Spalten</div>
+                <div id="split-global" class="stats-pie-chart"></div>
+            </div>
+            <div class="stats-pie-contain">
+                <div class="stats-pie-title">Schreiben</div>
+                <div id="write-global" class="stats-pie-chart"></div>
+            </div>
+        </div>
+        <div class="stats-slide-buttons">
+            <button class="crazy-btn stats-slide-next-btn">Dein Fortschritt</button>
+        </div>
+    </div>
+    <div id="sc1" class="stats-slide-comp">
+        <div class="stats-slide-buttons">
+            <button class="crazy-btn stats-slide-prev-btn">Gesamt Fortschritt</button>
+        </div>
+        <div class="stats-slide-title">
+            Dein Fortschritt
+        </div>
+        <div class="stats-slide-content">
+            <div class="stats-pie-contain">
+                <div class="stats-pie-title">Spalten</div>
+                <div id="split-person" class="stats-pie-chart"></div>
+                <button id="split-btn" class="crazy-btn">{{ split_button }}</button>
+            </div>
+            <div class="stats-pie-contain">
+                <div class="stats-pie-title">Schreiben</div>
+                <div id="write-person" class="stats-pie-chart"></div>
+                <button id="write-btn" class="crazy-btn">{{ write_button }}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block scriptsource %}
+{% load static %}
+{% static 'stats/stats.js' %}
 {% endblock %}

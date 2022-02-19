@@ -13,6 +13,18 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 from pathlib import Path
 import os
 
+
+NUM_USERS=10
+
+WRITE_NUM_TASKS=300
+WRITE_TASKS_PER_PERSON=30
+WRITE_NUM_DROPPED_TASKS=0
+
+SPLIT_NUM_TASKS=300
+SPLIT_TASKS_PER_PERSON=30
+SPLIT_NUM_DROPPED_TASKS=0
+
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 

@@ -17,9 +17,9 @@ def login_view(request):
     try:
         user = User.objects.get(username=data['username'].replace('.', ''))
         login(request, user)
-        login_info = {'succ': True, 'msg': 'Login erfolgreich!'}
+        login_info = {'succ': True}
     except ObjectDoesNotExist:
-        login_info = {'succ': False, 'msg': 'Name ist ungültig!'}
+        login_info = {'succ': False}
     return JsonResponse(login_info)
 
 

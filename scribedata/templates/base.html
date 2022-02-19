@@ -5,12 +5,22 @@
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}Base{% endblock %}</title>
-    <meta name="viewport"content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+        {% block cssvars %}
+        {% endblock %}
+        }
+    </style>
     <link rel="stylesheet" href="{% static 'base/base.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono|Shizuru|Press+Start+2P">
+    <script>const static_url = {% get_static_prefix %}+"This is probably  not needed"</script>
 </head>
 <body>
 {% block body %}
 Nobody
 {% endblock %}
+
+<script type="text/javascript" src="{% block scriptsource %}{% endblock %}"></script>
+
 </body>
 </html>
