@@ -4,7 +4,32 @@ Split
 {% endblock %}
 
 {% block body %}
-nothink
+
+<div id="split-line">
+    <div class="word" id="test">
+        <div class="word-label">one some more text and what if even more text has to be displayed, eh?</div>
+        <canvas class="hw-cvs" width="200" height="100"></canvas>
+    </div>
+    <div class="word">
+        <div class="word-label">two</div>
+        <canvas class="hw-cvs" width="200" height="100"></canvas>
+    </div>
+    <div id="unsplit">
+        <div id="unsplit-labels">
+            <div class="unsplit-label"></div>
+            <div class="unsplit-label"></div>
+            <div class="unsplit-label"></div>
+            <div class="unsplit-label"></div>
+        </div>
+        <canvas class="hw-cvs" width="200" height="100"></canvas>
+    </div>
+</div>
+<div class="control">
+    <button id="submit-btn"></button>
+    <button id="reject-btn"></button>
+</div>
+
+
 {% endblock %}
 
 {% block scriptsource %}

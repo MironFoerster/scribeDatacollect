@@ -134,3 +134,37 @@ body {
     box-shadow: 10px 10px;
 }
 
+#split-line {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.word, #unsplit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#unsplit-labels {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.unsplit-labels:first-child {
+    font-size: 20px;
+}
+
+.word-label, .unsplit-label {
+    font-size: 15px;
+}
+
+.hw-cvs {
+    height: 20px;
+    width: 25vw;
+    border: 1px solid #000000;
+}
