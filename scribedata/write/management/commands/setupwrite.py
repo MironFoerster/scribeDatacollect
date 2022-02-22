@@ -24,15 +24,18 @@ class Command(BaseCommand):
         tasks_per_person = num_tasks // num_users
         num_dropped_tasks = num_tasks % num_users
 
-        self.stdout.write('There are %d persons!' % num_users)
-        self.stdout.write('There are %d write tasks!' % num_tasks)
-        self.stdout.write('Every person will get %d write tasks!' % tasks_per_person)
-        self.stdout.write('%d write tasks will get dropped!' % num_dropped_tasks)
+        self.stdout.write('NUM_USERS=%d' % num_users)
+        self.stdout.write('WRITE_NUM_TASKS=%d' % num_tasks)
+        self.stdout.write('WRITE_TASKS_PER_PERSON=%d' % tasks_per_person)
+        self.stdout.write('WRITE_NUM_DROPPED_TASKS=%d' % num_dropped_tasks)
 
         # populate database and create file infrastructure
-        full_tasks_reader = csv.DictReader(tasks_fp, delimiter=';')  # automatically pops header?
+        fieldnames = ['text']
+        full_tasks_reader = csv.DictReader(tasks_fp, fieldnames=fieldnames, delimiter=';')
+        next(full_tasks_reader)  # pop header
         try:
             for user in User.objects.all():
+                # create PersonWrite Object and /csv/write/person/ Directory
                 p = PersonWrite.objects.create(name=user.username)
                 person_dp = os.path.join(settings.BASE_DIR, 'static/csv/write/', p.name)
                 os.makedirs(person_dp, exist_ok=True)

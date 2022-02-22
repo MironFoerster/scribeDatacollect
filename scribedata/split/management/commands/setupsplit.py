@@ -5,6 +5,7 @@ from django.core.management.base import BaseCommand, CommandError
 from django.conf import settings
 from split.models import PersonSplit
 
+
 class Command(BaseCommand):
     help = 'resetting and creating all split-data infrastructure'
 
@@ -25,13 +26,14 @@ class Command(BaseCommand):
         num_dropped_tasks = num_tasks % num_users
 
         self.stdout.write('NUM_USERS=%d' % num_users)
-        self.stdout.write('NUM_TASKS=%d' % num_tasks)
-        self.stdout.write('TASKS_PER_PERSON=%d' % tasks_per_person)
-        self.stdout.write('NUM_DROPPED_TASKS=%d' % num_dropped_tasks)
-
+        self.stdout.write('SPLIT_NUM_TASKS=%d' % num_tasks)
+        self.stdout.write('SPLIT_TASKS_PER_PERSON=%d' % tasks_per_person)
+        self.stdout.write('SPLIT_NUM_DROPPED_TASKS=%d' % num_dropped_tasks)
 
         # populate database and create file infrastructure
-        full_tasks_reader = csv.DictReader(tasks_fp, delimiter=';')  # automatically pops header?
+        fieldnames = ['strokes', 'text', 'person']
+        full_tasks_reader = csv.DictReader(tasks_fp, fieldnames=fieldnames, delimiter=';')
+        next(full_tasks_reader)  # pop header
         try:
             for user in User.objects.all():
                 p = PersonSplit.objects.create(name=user.username)
