@@ -27,8 +27,8 @@ def data(request):
             with open(os.path.join('../static/csv/write/', p.name, 'submits.csv'), 'a') as f:
                 fieldnames = ['strokes', 'text', 'person']
                 submits_writer = csv.DictWriter(f, fieldnames=fieldnames)
-                for row in submit['data']:
-                    submits_writer.writerow({'strokes': row['strokes'], 'text': row['text'], 'person': row['person']})
+                for word in submit['data']:
+                    submits_writer.writerow({'strokes': word['strokes'], 'text': word['text'], 'person': word['person']})
             msg = 'Erfolgreich in den Datensatz eingetragen!'
         else:
             msg = 'Dieser Eintrag war schon vorhanden!'
@@ -49,7 +49,7 @@ def data(request):
         task_data = {'text': task['text'], 'person': task['person']}
 
     response = {
-        'id': p.current_task,
+        'index': p.current_task,
         'data': task_data,
         'msg': msg
     }
