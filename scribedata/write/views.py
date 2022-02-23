@@ -1,6 +1,7 @@
 import json
 import csv
 import os
+from django.conf import settings
 from .models import PersonWrite
 from django.shortcuts import render
 from django.http import JsonResponse
@@ -24,21 +25,21 @@ def data(request):
             p.current_task += 1
             p.save()
 
-            with open(os.path.join('../static/csv/write/', p.name, 'submits.csv'), 'a') as f:
+            with open(os.path.join(settings.BASE_DIR, 'static/csv/write/', p.name, 'submits.csv'), 'a', newline='') as f:
                 fieldnames = ['strokes', 'text', 'person']
-                submits_writer = csv.DictWriter(f, fieldnames=fieldnames)
+                submits_writer = csv.DictWriter(f, fieldnames=fieldnames, delimiter=';')
                 for word in submit['data']:
                     submits_writer.writerow({'strokes': word['strokes'], 'text': word['text'], 'person': word['person']})
             msg = 'Erfolgreich in den Datensatz eingetragen!'
         else:
             msg = 'Dieser Eintrag war schon vorhanden!'
     else:  # only requesting a task
-        msg = 'Es wurden keine Daten gesendet!'
+        msg = 'Es wurden keine Daten empfangen!'
 
     # SEND NEXT TASK
-    with open(os.path.join('../static/csv/write/', p.name, 'tasks.csv'), 'r') as f:
+    with open(os.path.join(settings.BASE_DIR, 'static/csv/write/', p.name, 'tasks.csv'), 'r') as f:
         fieldnames = ['text', 'person']
-        tasks_reader = csv.DictReader(f, fieldnames=fieldnames)
+        tasks_reader = csv.DictReader(f, fieldnames=fieldnames, delimiter=';')
         # skip csv header
         next(tasks_reader)
         # skip already completed tasks
