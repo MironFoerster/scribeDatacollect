@@ -6,7 +6,25 @@ Split
 {% block body %}
 
 <div id="split-line">
-    <div class="word" id="test">
+
+</div>
+<div class="control" id="split-control">
+
+    <button id="undo-btn">Undo</button>
+    <button id="submit-btn">Submit</button>
+    <button id="reject-btn">Reject</button>
+</div>
+
+
+{% endblock %}
+
+{% block scriptsource %}
+{% load static %}
+{% static 'split/split.js' %}
+{% endblock %}
+
+<!--
+    <div class="word">
         <div class="word-label">one some more text and what if even more text has to be displayed, eh?</div>
         <canvas class="hw-cvs" width="200" height="100"></canvas>
     </div>
@@ -22,17 +40,4 @@ Split
             <div class="unsplit-label"></div>
         </div>
         <canvas class="hw-cvs" width="200" height="100"></canvas>
-    </div>
-</div>
-<div class="control">
-    <button id="submit-btn"></button>
-    <button id="reject-btn"></button>
-</div>
-
-
-{% endblock %}
-
-{% block scriptsource %}
-{% load static %}
-{% static 'split/split.js' %}
-{% endblock %}
+    </div>-->
