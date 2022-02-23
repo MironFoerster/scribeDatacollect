@@ -1,4 +1,6 @@
 import csv
+import os
+from django.conf import settings
 from django.contrib.auth.models import User
 from django.core.management.base import BaseCommand, CommandError
 
@@ -10,7 +12,8 @@ class Command(BaseCommand):
         parser.add_argument('users_fp', nargs=1)
 
     def handle(self, *args, **options):
-        users_fp = options['users_fp']
+        print(options['users_fp'][0])
+        users_fp = os.path.join(settings.BASE_DIR, 'static/csv/setup', options['users_fp'][0])
         # delete all existing users
         User.objects.all().delete()
 
