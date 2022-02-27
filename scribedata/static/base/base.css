@@ -81,12 +81,15 @@ body {
     font-size: 1.5em;
 }
 
+.stats-pie-title {
+    font-size: 2em;
+}
+
 .stats-pie-contain {
     display: flex;
     flex-direction: column;
     align-items: stretch;
     justify-content: space-between;
-    border: 5px solid green;
 }
 
 .stats-pie-chart {
@@ -98,8 +101,9 @@ body {
     display: inline-block;
     --percent: 45;
     --angle: calc(360deg*var(--percent)/100);
-    background-image: conic-gradient(#000000 0deg var(--angle), #ffffff var(--angle));
-    box-shadow: 10px 10px;
+    background-image: conic-gradient(#b3002e 0deg var(--angle), #25051b var(--angle));
+    box-shadow: 0 0 20px;
+    margin: 30px;
 }
 
 #split-global {
@@ -130,47 +134,144 @@ body {
     background-image: linear-gradient(to top right, #2E0C67, #8B0269, #CB345D, #FFB54D);
     font-size: 2.5em;
     font-family: "Press Start 2P", monospace;
-
     box-shadow: 10px 10px;
+    padding: 20px;
+}
+
+#submit-btn {
+    font-size: 4em;
+}
+
+#container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: space-around;
 }
 
 #split-line {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: stretch;
     justify-content: space-around;
+    margin-top: 20vh;
 }
 
-.word, #unsplit {
+.split-word, #unsplit, .written-word, #unwritten {
     display: flex;
     flex-direction: column;
-    align-items: stretch;
-    justify-content: space-between;
+    align-items: center;
+    justify-content: flex-end;
 }
 
-#unsplit-labels {
+
+
+#unsplit-labels, #unwritten-labels {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-self: stretch;
+    align-items: flex-end;
     justify-content: space-around;
 }
 
-.word-label, .unsplit-label {
+.split-word-label, .unsplit-label, .written-word-label, .unwritten-label {
+    color: #000022;
     font-size: 30px;
 }
 
-.unsplit-labels:first-child {
-    background-color: green;
+.unsplit-label:first-child, .unwritten-label:first-child {
+    color: #000000;
     font-size: 50px;
+}
+
+.unsplit-label:last-child {
+    color: #000022;
+    font-size: 30px;
 }
 
 .hw-cvs {
     height: 300px;
     border: 1px solid #000000;
+    background-color: #E6C4DA;
+
+}
+
+#write-line {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: space-around;
+    margin-top: 20vh;
+}
+
+.control {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 20vh;
+}
+
+#settings {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+input[type=range] {
+}
+
+#nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-btn {
+    font-size: 2em;
+    border-width: 2px;
+    margin-left: 5vw;
+    margin-right: 5vw;
+}
+
+/* tutorial */
+
+#tut-box {
+    position: absolute;
+    z-index: 2;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    transform: translate(-50%, -50%);
+    width: 60vw;
+    height: auto;
+    padding: 20px;
     background-image: linear-gradient(to top right, #2E0C67, #8B0269, #CB345D, #FFB54D);
-
+    box-shadow: 10px 10px 10px;
+    border: 5px solid black;
+    transition: left 1s, top 1s;
 }
 
-#unsplit-cvs {
-    background-color: green;
+#shade {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background-color: black;
+    opacity: 0.7;
 }
+
+#tut-content {
+    font-size: 2em;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
