@@ -32,18 +32,23 @@ body {
 
 .intro-slide-title {
     font-weight: bold;
-    font-size: 4em;
+    font-size: 3em;
+    padding-right: 40px;
+    padding-left: 40px;
 }
 
 .intro-slide-content {
-    font-size: 1.5em;
+    font-size: 2em;
+    font-family: monospace;
+    padding-right: 40px;
+    padding-left: 40px;
 }
 
 .intro-slide-buttons {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;space-around;
 }
 
 #stats-slider {
@@ -70,7 +75,7 @@ body {
 
 .stats-slide-title {
     font-weight: bold;
-    font-size: 4em;
+    font-size: 3em;
 }
 
 .stats-slide-content {
@@ -82,7 +87,7 @@ body {
 }
 
 .stats-pie-title {
-    font-size: 2em;
+    font-size: 1em;
 }
 
 .stats-pie-contain {
@@ -131,11 +136,13 @@ body {
 
 .crazy-btn {
     border-width: 10px;
+    border-color: #666666 #222222 #222222 #666666;
+    color: black;
     background-image: linear-gradient(to top right, #2E0C67, #8B0269, #CB345D, #FFB54D);
-    font-size: 2.5em;
+    font-size: 2em;
     font-family: "Press Start 2P", monospace;
     box-shadow: 10px 10px;
-    padding: 20px;
+    padding: 10px 20px 10px 20px;
 }
 
 #submit-btn {
@@ -151,7 +158,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    justify-content: space-around;
+    justify-content: flex-start; space-around;
 }
 
 #split-line {
@@ -181,21 +188,21 @@ body {
 
 .split-word-label, .unsplit-label, .written-word-label, .unwritten-label {
     color: #000022;
-    font-size: 30px;
+    font-size: 1em;
 }
 
 .unsplit-label:first-child, .unwritten-label:first-child {
     color: #000000;
-    font-size: 50px;
+    font-size: 2.5em;
 }
 
 .unsplit-label:last-child {
     color: #000022;
-    font-size: 30px;
+    font-size: 1em;
 }
 
 .hw-cvs {
-    height: 300px;
+    height: 200px;
     border: 1px solid #000000;
     background-color: #E6C4DA;
 
@@ -205,8 +212,8 @@ body {
     display: flex;
     flex-direction: row;
     align-items: stretch;
-    justify-content: space-around;
-    margin-top: 20vh;
+    justify-content: center;space-around;
+    margin-top: 5vh;
 }
 
 .control {
@@ -214,7 +221,7 @@ body {
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
-    margin-bottom: 20vh;
+    margin-top: 10vh;
 }
 
 #settings {
@@ -232,10 +239,11 @@ input[type=range] {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    margin-top: 5vh;
 }
 
 .nav-btn {
-    font-size: 2em;
+    font-size: 1em;
     border-width: 2px;
     margin-left: 5vw;
     margin-right: 5vw;
@@ -251,8 +259,8 @@ input[type=range] {
     align-items: center;
     justify-content: space-between;
     transform: translate(-50%, -50%);
-    width: 60vw;
-    height: auto;
+    height: 20vh;
+    width: 80vw;
     padding: 20px;
     background-image: linear-gradient(to top right, #2E0C67, #8B0269, #CB345D, #FFB54D);
     box-shadow: 10px 10px 10px;
@@ -270,7 +278,7 @@ input[type=range] {
 }
 
 #tut-content {
-    font-size: 2em;
+    font-size: 1em;
     margin-right: 20px;
     margin-left: 20px;
 }
