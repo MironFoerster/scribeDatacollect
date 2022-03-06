@@ -61,7 +61,7 @@ const receiveData = (current_task) => {
     document.getElementById("container").insertBefore(write_line, document.getElementById("write-control"));
     write_line.appendChild(unwritten);
 
-    if (sessionStorage.getItem("tutorial") == undefined) {
+    if (sessionStorage.getItem("write_tutorial") == undefined) {
         startTutorial();
     }
 }
@@ -69,11 +69,11 @@ const receiveData = (current_task) => {
 const startTutorial = () => {
     window.tut_data = [
         {text: "Willkommen beim Tutorial!<br>Lass uns die wichtigsten Funktionen dieser Seite anschauen!", left: "50vw", top: "50vh", focus_ids: []},
-        {text: "Auf dieser Fläche sollst du jeweils die Wörter schreiben, die drüber stehen. Du kannst links von und auf dem roten Marker schreiben.<br>Setze rechts vom Marker an, um ein neues Word anzufangen!", left: "50vw", top: "20vh", focus_ids: ["unwritten"]},
-        {text: "HINWEIS: Umlaute werden leider falsch angezeigt, lassen sich aber mit leicht herleiten!", left: "50vw", top: "20vh", focus_ids: ["unwritten"]},
-        {text: "Hier kannst du kannst Fehler rückgängig machen.", left: "40vw", top: "50vh", focus_ids: ["undo-btn"]},
-        {text: "Hier kannst du die Größe und Stärke des Markers nach deinen persönlichen Vorlieben anpassen.", left: "50vw", top: "50vh", focus_ids: ["settings"]},
-        {text: "Wenn du alle Wörter geschrieben hast, klicke hier, um die nächste Zeile zu bekommen!", left: "60vw", top: "50vh", focus_ids: ["submit-btn"]},
+        {text: "Auf dieser Fläche sollst du jeweils die Wörter schreiben, die drüber stehen. Du kannst links von und auf dem roten Marker schreiben.<br>Setze rechts vom Marker an, um ein neues Word anzufangen!", left: "50vw", top: "60vh", focus_ids: ["unwritten"]},
+        {text: "HINWEIS: Umlaute und s-z werden leider falsch angezeigt, lassen sich aber leicht herleiten!", left: "50vw", top: "60vh", focus_ids: ["unwritten"]},
+        {text: "Hier kannst du kannst Fehler rückgängig machen.", left: "45vw", top: "40vh", focus_ids: ["undo-btn"]},
+        {text: "Hier kannst du die Größe und Stärke des Markers nach deinen persönlichen Vorlieben anpassen.", left: "50vw", top: "40vh", focus_ids: ["settings"]},
+        {text: "Wenn du alle Wörter geschrieben hast, klicke hier, um die nächste Zeile zu bekommen!", left: "55vw", top: "40vh", focus_ids: ["submit-btn"]},
         {text: "Glückwunsch! Jetzt bist du bereit, loszulegen!", left: "50vw", top: "50vh", focus_ids: []},
     ]
     // initialize tutorial index
@@ -153,7 +153,7 @@ const finishTutorial = () => {
     // delete tutorial box
     document.getElementById("tut-box").remove()
     document.getElementById("shade").remove()
-    sessionStorage.setItem("tutorial", "done");
+    sessionStorage.setItem("write_tutorial", "done");
 }
 
 const cutOffNextWord = () => {

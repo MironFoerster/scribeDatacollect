@@ -78,7 +78,7 @@ const receiveData = (current_task) => {
     split_line.appendChild(unsplit);
 
 
-    if (sessionStorage.getItem("tutorial") == undefined) {
+    if (sessionStorage.getItem("split_tutorial") == undefined) {
         startTutorial();
     }
 }
@@ -87,9 +87,9 @@ const startTutorial = () => {
     window.tut_data = [
         {text: "Willkommen beim Tutorial!<br>Lass uns die wichtigsten Funktionen dieser Seite anschauen!", left: "50vw", top: "50vh", focus_ids: ["submit-btn"]},
         {text: "Hier werden die Handschriftzeilen angezeigt, die du in Wörter Auftrennen sollst. Ziehe einen Strich, um das nächste Wort abzutrennen!", left: "50vw", top: "20vh", focus_ids: ["unsplit"]},
-        {text: "Hier kannst du kannst Fehler rückgängig machen.", left: "40vw", top: "50vh", focus_ids: ["undo-btn"]},
+        {text: "Hier kannst du kannst Fehler rückgängig machen.", left: "45vw", top: "50vh", focus_ids: ["undo-btn"]},
         {text: "Wenn du alle Wörter getrennt hast, klicke hier, um die nächste Handschriftzeile zu bekommen!", left: "50vw", top: "50vh", focus_ids: ["submit-btn"]},
-        {text: "Wenn sich eine Zeile nicht korrekt aufspalten lässt oder sehr unleserlich ist, kannst du sie Überspringen!", left: "60vw", top: "50vh", focus_ids: ["reject-btn"]},
+        {text: "Wenn sich eine Zeile nicht korrekt aufspalten lässt oder sehr unleserlich ist, kannst du sie Überspringen!", left: "55vw", top: "50vh", focus_ids: ["reject-btn"]},
         {text: "Glückwunsch! Jetzt bist du bereit, loszulegen!", left: "50vw", top: "50vh", focus_ids: []},
     ]
     // initialize tutorial index
@@ -169,7 +169,7 @@ const finishTutorial = () => {
     // delete tutorial box
     document.getElementById("tut-box").remove()
     document.getElementById("shade").remove()
-    sessionStorage.setItem("tutorial", "done");
+    sessionStorage.setItem("split_tutorial", "done");
 }
 
 const splitNextWordAt = (x_coord) => {
