@@ -15,7 +15,7 @@ class Command(BaseCommand):
         # delete all existing PersonWrites
         PersonWrite.objects.all().delete()
 
-        tasks_fp = os.path.join(settings.BASE_DIR, 'static/csv/setup', options['tasks_fp'][0])
+        tasks_fp = os.path.join(settings.BASE_DIR, 'media/csv/setup', options['tasks_fp'][0])
 
         # count all tasks and find out tasks per person
         with open(tasks_fp, 'r') as forcount_tasks_file:
@@ -38,7 +38,7 @@ class Command(BaseCommand):
             for user in User.objects.all():
                 # create PersonWrite Object and /csv/write/person/ Directory
                 p = PersonWrite.objects.create(name=user.username)
-                person_dp = os.path.join(settings.BASE_DIR, 'static/csv/write/', p.name)
+                person_dp = os.path.join(settings.BASE_DIR, 'media/csv/write/', p.name)
                 os.makedirs(person_dp, exist_ok=True)
 
                 with open(os.path.join(person_dp, 'tasks.csv'), 'w', newline='') as person_tasks_file:

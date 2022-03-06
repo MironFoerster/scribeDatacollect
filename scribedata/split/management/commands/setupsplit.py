@@ -16,7 +16,7 @@ class Command(BaseCommand):
         # delete all existing PersonSplits
         PersonSplit.objects.all().delete()
 
-        tasks_fp = os.path.join(settings.BASE_DIR, 'static/csv/setup', options['tasks_fp'][0])
+        tasks_fp = os.path.join(settings.BASE_DIR, 'media/csv/setup', options['tasks_fp'][0])
 
         # count all tasks and find out tasks per person
         with open(tasks_fp, 'r') as forcount_tasks_file:
@@ -38,7 +38,7 @@ class Command(BaseCommand):
             next(full_tasks_reader)  # pop header
             for user in User.objects.all():
                 p = PersonSplit.objects.create(name=user.username)
-                person_dp = os.path.join(settings.BASE_DIR, 'static/csv/split/', p.name)
+                person_dp = os.path.join(settings.BASE_DIR, 'media/csv/split/', p.name)
                 os.makedirs(person_dp, exist_ok=True)
 
                 with open(os.path.join(person_dp, 'tasks.csv'), 'w', newline='') as person_tasks_file:

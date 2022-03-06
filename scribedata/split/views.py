@@ -26,7 +26,7 @@ def data(request):
             p.save()
 
             if not submit['reject']:
-                with open(os.path.join(settings.BASE_DIR, 'static/csv/split/', p.name, 'submits.csv'), 'a', newline='') as f:
+                with open(os.path.join(settings.BASE_DIR, 'media/csv/split/', p.name, 'submits.csv'), 'a', newline='') as f:
                     fieldnames = ['strokes', 'text', 'person']
                     submits_writer = csv.DictWriter(f, fieldnames=fieldnames, delimiter=';')
                     for word in submit['data']:
@@ -41,7 +41,7 @@ def data(request):
         msg = 'Es wurden keine Daten empfangen!'
 
     # SEND NEXT TASK
-    with open(os.path.join(settings.BASE_DIR,'static/csv/split/', p.name, 'tasks.csv'), 'r') as f:
+    with open(os.path.join(settings.BASE_DIR,'media/csv/split/', p.name, 'tasks.csv'), 'r') as f:
         print('requesting')
         fieldnames = ['strokes', 'text', 'person']
         tasks_reader = csv.DictReader(f, fieldnames=fieldnames, delimiter=';')

@@ -13,7 +13,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         print(options['users_fp'][0])
-        users_fp = os.path.join(settings.BASE_DIR, 'static/csv/setup', options['users_fp'][0])
+        users_fp = os.path.join(settings.BASE_DIR, 'media/csv/setup', options['users_fp'][0])
         # delete all existing users
         User.objects.all().delete()
 

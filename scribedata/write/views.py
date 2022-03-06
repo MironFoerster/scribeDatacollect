@@ -25,7 +25,7 @@ def data(request):
             p.current_task += 1
             p.save()
 
-            with open(os.path.join(settings.BASE_DIR, 'static/csv/write/', p.name, 'submits.csv'), 'a', newline='') as f:
+            with open(os.path.join(settings.BASE_DIR, 'media/csv/write/', p.name, 'submits.csv'), 'a', newline='') as f:
                 fieldnames = ['strokes', 'text', 'person']
                 submits_writer = csv.DictWriter(f, fieldnames=fieldnames, delimiter=';')
                 for word in submit['data']:
@@ -37,7 +37,7 @@ def data(request):
         msg = 'Es wurden keine Daten empfangen!'
 
     # SEND NEXT TASK
-    with open(os.path.join(settings.BASE_DIR, 'static/csv/write/', p.name, 'tasks.csv'), 'r') as f:
+    with open(os.path.join(settings.BASE_DIR, 'media/csv/write/', p.name, 'tasks.csv'), 'r') as f:
         fieldnames = ['text', 'person']
         tasks_reader = csv.DictReader(f, fieldnames=fieldnames, delimiter=';')
         # skip csv header
