@@ -6,7 +6,7 @@ from django.db.models import Sum
 from django.conf import settings
 
 # Create your views here.
-@login_required(login_url='/login/')
+@login_required(login_url='/')
 def index(request):
     split_state = 'Anfangen!' if PersonSplit.objects.get(name=request.user.username).current_task == 0 else 'Weitermachen!'
     write_state = 'Anfangen!' if PersonWrite.objects.get(name=request.user.username).current_task == 0 else 'Weitermachen!'

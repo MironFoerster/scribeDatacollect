@@ -7,12 +7,12 @@ from django.shortcuts import render
 from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
 
-@login_required(login_url='/login/')
+@login_required(login_url='/')
 def index(request):
     context = {}
     return render(request, 'split.html', context=context)
 
-@login_required(login_url='/login/')
+@login_required(login_url='/')
 def data(request):
     p = PersonSplit.objects.get(name=request.user.username)
 
