@@ -8,8 +8,8 @@ from django.conf import settings
 # Create your views here.
 @login_required(login_url='/')
 def index(request):
-    split_state = 'Anfangen!' if PersonSplit.objects.get(name=request.user.username).current_task == 0 else 'Weiter!'
-    write_state = 'Anfangen!' if PersonWrite.objects.get(name=request.user.username).current_task == 0 else 'Weiter!'
+    split_state = 'Anfangen!' if PersonSplit.objects.get(name=request.user.username).current_task == 0 else ('Weiter!' if PersonSplit.objects.get(name=request.user.username).current_task == settings.SPLIT_TASKS_PER_PERSON else 'Fertig')
+    write_state = 'Anfangen!' if PersonWrite.objects.get(name=request.user.username).current_task == 0 else ('Weiter!' if PersonWrite.objects.get(name=request.user.username).current_task == settings.WRITE_TASKS_PER_PERSON else 'Fertig')
     split_global_percentage = (PersonSplit.objects.aggregate(Sum('current_task'))['current_task__sum'] * 100) / settings.SPLIT_NUM_TASKS
     write_global_percentage = (PersonWrite.objects.aggregate(Sum('current_task'))['current_task__sum'] * 100) / settings.WRITE_NUM_TASKS
     split_person_percentage = (PersonSplit.objects.get(name=request.user.username).current_task * 100) / settings.SPLIT_TASKS_PER_PERSON
