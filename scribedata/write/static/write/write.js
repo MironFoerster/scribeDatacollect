@@ -16,6 +16,18 @@ const submitData = (e) => {
 
 const receiveData = (current_task) => {
     window.task_index = current_task.index;
+    if (window.task_index == -1) {
+        finished = document.createElement("div");
+        finished.id = "finished";
+        finished.innerHTML = "Yippieeeeee!!!!!<br>Du hast alle deine Schreib-Aufgaben erledigt!<br>Mach gleich weiter mit dem Spalten!";
+        finished_btn = document.createElement("button");
+        finished_btn.className = "crazy-btn";
+        finished_btn.innerHTML = "Cool!";
+        finished_btn.addEventListener('click', (e)=>{location.href = window.location.origin.concat("/stats/")})
+        finished.appendChild(finished_btn);
+        document.body.appendChild(finished);
+        return
+    }
     window.task_data = current_task.data;
     window.task_person = current_task.data.person;
     window.submit_data = [{'text': current_task.data.text, 'strokes': []}];
