@@ -37,20 +37,26 @@ def data(request):
         msg = 'Es wurden keine Daten empfangen!'
 
     # SEND NEXT TASK
-    with open(os.path.join(settings.BASE_DIR, 'media/csv/write/', p.name, 'tasks.csv'), 'r') as f:
-        fieldnames = ['text', 'person']
-        tasks_reader = csv.DictReader(f, fieldnames=fieldnames, delimiter=';')
-        # skip csv header
-        next(tasks_reader)
-        # skip already completed tasks
-        for i in range(p.current_task):
+    if PersonWrite.objects.get(name=request.user.username).current_task == settings.WRITE_TASKS_PER_PERSON:
+        task_data = []
+        task_index = -1
+        msg = 'finished'
+    else:
+        with open(os.path.join(settings.BASE_DIR, 'media/csv/write/', p.name, 'tasks.csv'), 'r') as f:
+            fieldnames = ['text', 'person']
+            tasks_reader = csv.DictReader(f, fieldnames=fieldnames, delimiter=';')
+            # skip csv header
             next(tasks_reader)
-        # read current task
-        task = next(tasks_reader)
-        task_data = {'text': task['text'], 'person': task['person']}
+            # skip already completed tasks
+            for i in range(p.current_task):
+                next(tasks_reader)
+            # read current task
+            task = next(tasks_reader)
+            task_data = {'text': task['text'], 'person': task['person']}
+            task_index = p.current_task
 
     response = {
-        'index': p.current_task,
+        'index': task_index,
         'data': task_data,
         'msg': msg
     }
