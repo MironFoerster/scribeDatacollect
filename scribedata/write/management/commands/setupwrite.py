@@ -26,7 +26,7 @@ class Command(BaseCommand):
         num_dropped_tasks = num_tasks % num_users
 
         self.stdout.write('NUM_USERS=%d' % num_users)
-        self.stdout.write('WRITE_NUM_TASKS=%d' % num_tasks-num_dropped_tasks)
+        self.stdout.write('WRITE_NUM_TASKS=%d' % (num_tasks-num_dropped_tasks))
         self.stdout.write('WRITE_TASKS_PER_PERSON=%d' % tasks_per_person)
         self.stdout.write('WRITE_NUM_DROPPED_TASKS=%d' % num_dropped_tasks)
 
