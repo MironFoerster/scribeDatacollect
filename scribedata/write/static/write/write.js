@@ -380,6 +380,7 @@ document.getElementById("tutorial").addEventListener("click", startTutorial, fal
 document.getElementById("tostats").addEventListener("click", (e)=>{location.href = window.location.origin.concat("/stats/")}, false);
 document.getElementById("distance-rng").addEventListener("change", (e)=>{window.word_distance=parseInt(e.currentTarget.value);redraw_canvas(document.getElementById("unwritten-cvs"), window.submit_data[window.submit_data.length-1].strokes);}, false);
 document.getElementById("opacity-rng").addEventListener("change", (e)=>{window.grad_opct=e.currentTarget.value;redraw_canvas(document.getElementById("unwritten-cvs"), window.submit_data[window.submit_data.length-1].strokes);}, false);
+document.body.addEventListener("click", (e)=>{e.preventDefault();})
 
 
 const getCookie = (name) => { // kopiert von: https://docs.djangoproject.com/en/3.1/ref/csrf/#acquiring-the-token-if-csrf-use-sessions-and-csrf-cookie-httponly-are-false

@@ -392,7 +392,7 @@ document.getElementById("reject-btn").addEventListener("click", submitData, fals
 document.getElementById("submit-btn").addEventListener("click", submitData, false);
 document.getElementById("tutorial").addEventListener("click", startTutorial, false);
 document.getElementById("tostats").addEventListener("click", ()=>{location.href = window.location.origin.concat("/stats/")}, false);
-
+document.body.addEventListener("click", (e)=>{e.preventDefault();})
 
 
 const getCookie = (name) => { // kopiert von: https://docs.djangoproject.com/en/3.1/ref/csrf/#acquiring-the-token-if-csrf-use-sessions-and-csrf-cookie-httponly-are-false
