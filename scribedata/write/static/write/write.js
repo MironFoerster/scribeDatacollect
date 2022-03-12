@@ -91,12 +91,12 @@ const receiveData = (current_task) => {
 const startTutorial = () => {
     window.tut_data = [
         {text: "Willkommen beim Tutorial!<br>Lass uns die wichtigsten Funktionen dieser Seite anschauen!", left: "50vw", top: "50vh", focus_ids: []},
-        {text: "Auf dieser Fläche sollst du jeweils die Wörter schreiben, die drüber stehen. Du kannst links von und auf dem roten Marker schreiben.<br>Setze rechts vom Marker an, um ein neues Word anzufangen!", left: "50vw", top: "60vh", focus_ids: ["unwritten"]},
+        {text: "Auf dieser Fläche sollst du jeweils die Wörter schreiben, die drüber stehen. Beginne das erste Wort auf dem Roten Marker! Setze für jedes weitere Wort rechts vom Marker an!", left: "50vw", top: "60vh", focus_ids: ["unwritten"]},
         {text: "HINWEIS: Umlaute und s-z werden leider falsch angezeigt, lassen sich aber leicht herleiten!", left: "50vw", top: "60vh", focus_ids: ["unwritten"]},
-        {text: "Hier kannst du kannst Fehler rückgängig machen.", left: "45vw", top: "40vh", focus_ids: ["undo-btn"]},
-        {text: "Hier kannst du die Größe und Stärke des Markers nach deinen persönlichen Vorlieben anpassen.", left: "50vw", top: "40vh", focus_ids: ["settings"]},
-        {text: "Wenn du alle Wörter geschrieben hast, klicke hier, um die nächste Zeile zu bekommen!", left: "55vw", top: "40vh", focus_ids: ["submit-btn"]},
-        {text: "Glückwunsch! Jetzt bist du bereit, loszulegen!", left: "50vw", top: "50vh", focus_ids: []},
+        {text: "Hier kannst du kannst Fehler rückgängig machen.", left: "55vw", top: "40vh", focus_ids: ["undo-btn"]},
+        {text: "Hier kannst du die Größe und Stärke des Markers an deinen Schreibstil anpassen.", left: "50vw", top: "40vh", focus_ids: ["settings"]},
+        {text: "Wenn du alle Wörter geschrieben hast, klicke hier, um die nächste Zeile zu bekommen!", left: "45vw", top: "40vh", focus_ids: ["submit-btn"]},
+        {text: "Glückwunsch! Jetzt bist du bereit, loszulegen!<br>Dieses Tutorial kannst du dir jederzeit nochmal ansehen.", left: "50vw", top: "50vh", focus_ids: []},
     ]
     // initialize tutorial index
     window.tut_idx = 0;
