@@ -31,15 +31,24 @@ const submitData = (e) => {
 const receiveData = (current_task) => {
     window.task_index = current_task.index;
     if (window.task_index == -1) {
+        document.getElementById("split-line").remove();
         finished = document.createElement("div");
         finished.id = "finished";
-        finished.innerHTML = "Yippieeeeee!!!!!<br>Du hast alle deine Spalten-Aufgaben erledigt!<br>Mach gleich weiter mit dem Schreiben!";
+        finished_cont = document.createElement("div");
+        finished_cont.innerHTML = "<span style='font-size: 2em;'>Yippieeeeee!!!!!</span><br>Du hast alle deine Spalten-Aufgaben erledigt!<br>Mach gleich weiter mit den Schreib-Aufgaben!";
+
         finished_btn = document.createElement("button");
         finished_btn.className = "crazy-btn";
         finished_btn.innerHTML = "Cool!";
         finished_btn.addEventListener('click', (e)=>{location.href = window.location.origin.concat("/stats/")})
+
+        finished.appendChild(finished_cont);
         finished.appendChild(finished_btn);
-        document.body.appendChild(finished);
+
+        shade = document.createElement("div");
+        shade.id = "shade";
+        document.body.appendChild(shade);
+        document.getElementById("container").insertBefore(finished, document.getElementById("split-control"));
         return
     }
     window.task_data = current_task.data;

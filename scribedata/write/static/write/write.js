@@ -1,6 +1,7 @@
 const submitData = (e) => {
     // check if data is valid for submit
     if (window.submit_data.length === window.task_data.text.split(" ").length) {
+        console.log(window.submit_data);
         fetch(window.location.origin.concat("/write/data/"), {
         method: "POST",
         headers: {
@@ -17,20 +18,29 @@ const submitData = (e) => {
 const receiveData = (current_task) => {
     window.task_index = current_task.index;
     if (window.task_index == -1) {
+        document.getElementById("write-line").remove();
         finished = document.createElement("div");
         finished.id = "finished";
-        finished.innerHTML = "Yippieeeeee!!!!!<br>Du hast alle deine Schreib-Aufgaben erledigt!<br>Mach gleich weiter mit dem Spalten!";
+        finished_cont = document.createElement("div");
+        finished_cont.innerHTML = "<span style='font-size: 2em;'>Yippieeeeee!!!!!</span><br>Du hast alle deine Schreib-Aufgaben erledigt!<br>Mach gleich weiter mit den Spalt-Aufgaben!";
+
         finished_btn = document.createElement("button");
         finished_btn.className = "crazy-btn";
         finished_btn.innerHTML = "Cool!";
         finished_btn.addEventListener('click', (e)=>{location.href = window.location.origin.concat("/stats/")})
+
+        finished.appendChild(finished_cont);
         finished.appendChild(finished_btn);
-        document.body.appendChild(finished);
+
+        shade = document.createElement("div");
+        shade.id = "shade";
+        document.body.appendChild(shade);
+        document.getElementById("container").insertBefore(finished, document.getElementById("write-control"));
         return
     }
     window.task_data = current_task.data;
     window.task_person = current_task.data.person;
-    window.submit_data = [{'text': current_task.data.text, 'strokes': []}];
+    window.submit_data = [{'text': current_task.data.text, 'strokes': [], 'person': window.task_person}];
     window.max_x = 0;
     window.word_distance = parseInt(document.getElementById("distance-rng").value);
     window.grad_opct = document.getElementById("opacity-rng").value;
