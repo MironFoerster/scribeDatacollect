@@ -274,7 +274,12 @@ const touchEnd = (e) => {
             }
         }
         if (next_right_point_x-next_left_point_x >= 50) {
-            splitNextWordAt(next_left_point_x + (next_right_point_x-next_left_point_x)/2);
+            if (next_left_point_x === -Infinity || next_right_point_x === Infinity) {
+                alert('Kein Wort abgeschnitten!')
+                redraw_canvas(document.getElementById("unsplit-cvs"), window.submit_data[window.submit_data.length-1].strokes)
+            } else {
+                splitNextWordAt(next_left_point_x + (next_right_point_x-next_left_point_x)/2);
+            }
         } else {
             alert('Linie würde zerschnitten!');
             redraw_canvas(document.getElementById("unsplit-cvs"), window.submit_data[window.submit_data.length-1].strokes)
