@@ -98,7 +98,9 @@ body {
 }
 
 .stats-pie-chart {
+    color: #FFB54D;
     --diameter: 25vw;
+    line-height: var(--diameter);
     width: var(--diameter);
     min-height: var(--diameter);
     border-radius: 50%;

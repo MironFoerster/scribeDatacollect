@@ -20,11 +20,11 @@ Stats
         <div class="stats-slide-content">
             <div class="stats-pie-contain">
                 <div class="stats-pie-title">Spalten</div>
-                <div id="split-global" class="stats-pie-chart"></div>
+                <div id="split-global" class="stats-pie-chart">{{ split_global_text }}</div>
             </div>
             <div class="stats-pie-contain">
                 <div class="stats-pie-title">Schreiben</div>
-                <div id="write-global" class="stats-pie-chart"></div>
+                <div id="write-global" class="stats-pie-chart">{{ write_global_text }}</div>
             </div>
         </div>
         <div class="stats-slide-buttons">
@@ -41,12 +41,12 @@ Stats
         <div class="stats-slide-content">
             <div class="stats-pie-contain">
                 <div class="stats-pie-title">Spalten</div>
-                <div id="split-person" class="stats-pie-chart"></div>
+                <div id="split-person" class="stats-pie-chart">{{ split_person_text }}</div>
                 <button id="split-btn" class="crazy-btn">{{ split_button }}</button>
             </div>
             <div class="stats-pie-contain">
                 <div class="stats-pie-title">Schreiben</div>
-                <div id="write-person" class="stats-pie-chart"></div>
+                <div id="write-person" class="stats-pie-chart">{{ write_person_text }}</div>
                 <button id="write-btn" class="crazy-btn">{{ write_button }}</button>
             </div>
         </div>
